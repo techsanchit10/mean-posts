@@ -1,0 +1,32 @@
+:host{
+  display: block;
+  margin-top: 1rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+mat-paginator {
+  margin: 1rem;
+}
+
+
+.post-image {
+  width: 100%;
+  /* height: 50%; */
+}
+
+.post-image img {
+  width: 50%;
+  height: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  font-family: cursive;
+}
+
+mat-action-row {
+  background-color: rgba(0, 0, 150, 0.3);
+}

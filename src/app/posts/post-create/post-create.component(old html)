@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <!-- <input matInput type="text" name="" id="" [(ngModel)]="enteredTitle" placeholder="Title"> -->
+        <!-- instead of using 2 way binding as above we can use : -->
+        <input matInput type="text"
+               name="title"
+               [ngModel]="updatePost?.title"
+               placeholder="Title"
+               autocomplete="off"
+               required
+               minlength="5"
+               #title="ngModel">
+               <!-- #title is a local reference of type ngModel so that we can refer to this field directly without using
+                form.getControl('title').invalid -->
+        <mat-error *ngIf="title.invalid">Please enter a valid title of minimum length 5</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button type="button" (click)="imgPicker.click()">Upload Image</button>
+        <input type="file" #imgPicker>
+      </div>
+      <mat-form-field>
+        <!-- <textarea matInput cols="30" rows="10" [(ngModel)]="enteredContent" placeholder="Content"></textarea> -->
+        <textarea matInput rows="5"
+                  name="content"
+                  [ngModel]="updatePost?.content"
+                  placeholder="Content"
+                  required
+                  #content="ngModel"></textarea>
+        <mat-error *ngIf="content.invalid">Please enter a valid content</mat-error>
+
+      </mat-form-field>
+      <!-- <button
+      mat-raised-button
+      color= "accent"
+      (click)="onAddPost()">Save Post</button> -->
+      <!-- removing the click listener and adding the form (submit) instead -->
+      <button
+      mat-raised-button
+      color= "accent"
+      type = "submit">Save Post</button>
+    </form>
+</mat-card>
+<br>
+
+<!-- <mat-card>
+  <p>{{ enteredValue }}</p>
+  <p>{{ newPost }}</p>
+</mat-card> -->
